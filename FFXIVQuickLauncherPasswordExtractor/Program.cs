@@ -19,7 +19,9 @@ namespace FFXIVQuickLauncherPasswordExtractor
                 if (a.Equals("exit", StringComparison.OrdinalIgnoreCase)) break;
                 try
                 {
-                    var credentials = CredentialManager.GetCredentials($"FINAL FANTASY XIV-{a.ToLower()}");
+                    var credentials = CredentialManager.GetCredentials($"FINAL FANTASY XIV-{a.ToLower()}") 
+                        ?? CredentialManager.GetCredentials($"XIVLAUNCHER-{a.ToLower()}") 
+                        ?? CredentialManager.GetCredentials($"XIVLAUNCHERCN-{a.ToLower()}");
                     if(credentials == null)
                     {
                         Console.WriteLine("Not found");
